@@ -229,3 +229,23 @@ rule calculate_read_coverage:
     shell:
         "bcftools mpileup -O b -o {output} "
         "-f {input[0]} {input[1]}"
+
+rule detect_snv:
+    container:
+        "containers/ecoli-bioinformatics.sif"
+    input:
+        "results/bcf/{sample}_raw.bcf"
+    output:
+        "results/vcf/{sample}_variants.vcf"
+    shell:
+        "bcftools call --ploidy 1 -m -v -o {output} {input}"
+
+rule filter_and_report:
+    container:
+        "containers/ecoli-bioinformatics.sif"
+    input:
+        "results/vcf/{sample}_variants.vcf"
+    output:
+        "results/vcf/{sample}_final_variants.vcf"
+    shell:
+        "vcfutils.pl varFilter {input} > {output}"
