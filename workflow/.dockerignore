@@ -1,0 +1,14 @@
+# Ignore unnecessary files for Docker build
+.git
+.gitignore
+*.md
+*.log
+.snakemake/
+data/
+results/
+notebooks/
+*.pyc
+__pycache__/
+*.un~
+*~
+
