@@ -8,6 +8,7 @@ on:
     paths:
       - 'workflow/Dockerfile'
       - '.github/workflows/build-container.yml'
+      - 'workflow/snakefile'
   workflow_dispatch:  # Allow manual triggering
 
 jobs:
