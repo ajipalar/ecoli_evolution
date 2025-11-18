@@ -1,6 +1,6 @@
 ## Data Wrangling
 
-This repository reproduces the _escherichia coli_ variant calling [workflow](https://datacarpentry.github.io/wrangling-genomics) in a reproducible manner using snakemake an Apptainer container. The workflow proceeds by (i) fetching both the sequenced genomes of _e. coli_ from successive generations and a reference genome; (ii) assessing read quality using FastQC and/or trimming and filtering; (iii) aligning reads to the reference genome; (iv) post-alignment cleanup; (v) variant calling.
+Reproduces the _escherichia coli_ variant calling [workflow](https://datacarpentry.github.io/wrangling-genomics) using snakemake and an Apptainer container. The workflow proceeds by (i) fetching both the sequenced genomes of _e. coli_ from successive generations and a reference genome; (ii) assessing read quality using FastQC and/or trimming and filtering; (iii) aligning reads to the reference genome; (iv) post-alignment cleanup; (v) variant calling.
 
 ## Installation
 
@@ -34,6 +34,12 @@ cd ..
 Test the installation
 ```bash
 snakemake --use-singularity --cores 4 fastqc_test_1
+```
+
+## Running the workflow
+To run all steps for a single sample (e.g., SRR2584866) run
+```bash
+snakemake --use-singularity --cores 4  results/vcf/SRR2584866_final_variants.vcf
 ```
 
 
